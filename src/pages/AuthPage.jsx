@@ -3,6 +3,7 @@ import {Button, Container, Form} from "react-bootstrap";
 import MediaAuthButton from "../components/MediaAuthButton";
 import "./authpage.css";
 import authBg from "../assets/images/background.svg";
+import authBgAlt from "../assets/images/alt-baclground.svg";
 
 const AuthPage = () => {
     let [screen, setScreen] = useState("login");
@@ -18,7 +19,9 @@ const AuthPage = () => {
         <div className="h-100 d-flex auth-bg" style={{
             background: `url(${authBg}) center, #F1F3F4`, backgroundSize: 'cover'
         }}>
-            <div className="m-auto d-flex justify-content-center auth-container">
+            <div className="m-auto d-flex justify-content-center auth-container" style={{
+                background: `url(${authBgAlt}) center`, backgroundSize: 'cover'
+            }}>
                 <div className={"flex-grow-1 auth-register-container " + (screen === "login" ? "" : "hidden-container")}>
                     <div className="auth-sub-container">
                         <Form className="d-flex flex-column align-items-center auth-form">

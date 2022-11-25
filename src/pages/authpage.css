@@ -24,16 +24,12 @@
 
 
 .auth-container {
-    width: 960px;
+    width: 67vw;
     border-radius: 10px;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.95);
 }
 
 .auth-side {
     width: 360px;
-    background: linear-gradient(180deg, #3AAF9F 25.52%, #38B591 100%);
-    border-radius: 10px;
 }
 
 .auth-form {
@@ -76,10 +72,13 @@
 .auth-login-container,
 .auth-register-container {
     position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.7s ease-out;
     overflow: hidden;
     flex-grow: 1;
-    min-height: 600px;
+    height: 80.8vh;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 0 0 1px white;
 }
 
 .auth-sub-container {
@@ -92,4 +91,5 @@
 
 .hidden-container {
     flex-grow: 0 !important;
+    box-shadow: none;
 }
