@@ -1,7 +1,8 @@
 import React from "react";
+import RoadmapTree from "../components/RoadmapTree";
 
 const MainPage = () => {
-    return <div>MainPage</div>;
+    return <RoadmapTree />;
 };
 
 export default MainPage;
