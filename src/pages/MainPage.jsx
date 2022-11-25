@@ -1,10 +1,11 @@
 import React from "react";
+import {NavLink} from "react-router-dom";
 
 const MainPage = () => {
     return (
         <>
             <div>MainPage</div>
-            <a href="/auth">AuthPage</a>
+            <NavLink to="/auth">login</NavLink>
         </>
     )
 };
