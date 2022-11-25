@@ -1,0 +1,95 @@
+/* enable absolute positioning */
+.inner-addon {
+    position: relative;
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+}
+
+/* align icon */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+.auth-bg {
+
+}
+
+
+.auth-container {
+    width: 960px;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.auth-side {
+    width: 360px;
+    background: linear-gradient(180deg, #3AAF9F 25.52%, #38B591 100%);
+    border-radius: 10px;
+}
+
+.auth-form {
+    min-width: 360px;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.auth-form-group {
+    max-width: 360px;
+}
+
+.auth-field {
+    background: #F4F8F7 !important;
+    height: 50px;
+    border: none;
+    border-radius: 0;
+    color: #989B9A;
+}
+
+.auth-submit-button {
+    background: #3AB19B;
+    text-transform: uppercase;
+    font-family: 'Roboto', serif;
+    font-weight: 900;
+}
+
+.auth-side-button {
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.auth-header-text {
+    font-family: 'Comfortaa', serif;
+    font-weight: 400;
+    font-size: 27px;
+}
+
+
+.auth-login-container,
+.auth-register-container {
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    flex-grow: 1;
+    min-height: 600px;
+}
+
+.auth-sub-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden-container {
+    flex-grow: 0 !important;
+}

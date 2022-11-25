@@ -2,6 +2,7 @@ import React, { createContext } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import userStore from "./store/userStore";
+import "./index.css";
 
 export const Context = createContext(null);
 
