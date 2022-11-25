@@ -29,7 +29,7 @@
 }
 
 .auth-side {
-    width: 360px;
+    width: 40%;
 }
 
 .auth-form {
@@ -60,6 +60,15 @@
 .auth-side-button {
     text-transform: uppercase;
     font-weight: 900;
+    width: 100%;
+}
+
+@media screen and (min-width: 1200px) {
+    .auth-side-button {
+        width: auto;
+        padding-left: 4rem !important;
+        padding-right: 4rem !important;
+    }
 }
 
 .auth-header-text {
@@ -74,7 +83,7 @@
     position: relative;
     transition: all 0.7s ease-out;
     overflow: hidden;
-    flex-grow: 1;
+    flex: 2;
     height: 80.8vh;
     border-radius: 10px;
     background: white;

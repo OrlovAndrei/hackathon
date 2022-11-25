@@ -104,10 +104,10 @@ const sidepage = (screen, onScreenChange) => {
         buttonText = "Зарегистрироваться"
     }
 
-    return <div className="auth-side d-flex flex-column align-items-center justify-content-center px-2">
+    return <div className="auth-side d-flex flex-column align-items-center justify-content-center px-4">
         <h3 className="text-white auth-header-text text-center mb-4">{header}</h3>
         <p className="text-white text-center mb-5">{text}</p>
-        <Button variant="outline-light" className="rounded-pill auth-side-button px-5 py-3" onClick={onScreenChange}>{buttonText}</Button>
+        <Button variant="outline-light" className="rounded-pill auth-side-button px-2 py-3" onClick={onScreenChange}>{buttonText}</Button>
     </div>;
 }
 
