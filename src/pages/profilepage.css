@@ -175,3 +175,11 @@
         height: 60px;
     }
 }
+
+
+@media screen and (max-height: 400px) {
+    .avatar {
+        width: 90px;
+        height: 90px;
+    }
+}

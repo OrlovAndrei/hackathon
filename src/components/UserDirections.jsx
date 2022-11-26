@@ -6,10 +6,20 @@ const UserDirections = () => {
     const [directions, setDirections] = useState([])
 
     useEffect(() => {
-        setDirections(getFakeDirections)
+        setDirections(getUserDirections)
     }, [])
 
-    const AddButton = createAddButton()
+    const addNewDirection = (dirId) => {
+        let alreadyExist = directions.find(dir => dir.id === Number(dirId)) !== undefined;
+        if (alreadyExist) return
+
+        let newDirection = getAllDirections().find(dir => dir.id === Number(dirId))
+        setDirections(dirs => {
+            return [...dirs.filter(dir => dir.id !== dirId), newDirection]
+        })
+    }
+
+    const AddButton = createAddButton(addNewDirection)
 
     return (
         <div className="directions-container">
@@ -25,7 +35,9 @@ const UserDirections = () => {
 
 export default UserDirections
 
-const createAddButton = () => {
+const createAddButton = (onSelectCallback) => {
+    let allDirections = getAllDirections()
+
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
         <button
             ref={ref}
@@ -69,20 +81,17 @@ const createAddButton = () => {
     );
 
     return (
-        <Dropdown>
+        <Dropdown onSelect={onSelectCallback}>
             <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components"/>
 
-            <Dropdown.Menu as={CustomMenu} className="add-btn-menu">
-                <Dropdown.Item eventKey="1">Frontend</Dropdown.Item>
-                <Dropdown.Item eventKey="2">Backend</Dropdown.Item>
-                <Dropdown.Item eventKey="3">Дизайн</Dropdown.Item>
-                <Dropdown.Item eventKey="4">Системный аналитик</Dropdown.Item>
+            <Dropdown.Menu as={CustomMenu} className="add-btn-menu" >
+                {allDirections.map(dir => <Dropdown.Item key={dir.id} eventKey={dir.id}>{dir.name}</Dropdown.Item>)}
             </Dropdown.Menu>
         </Dropdown>
     )
 }
 
-const getFakeDirections = () => {
+const getAllDirections = () => {
     return [
         {
             name: 'Front-End',
@@ -110,4 +119,8 @@ const getFakeDirections = () => {
             id: 5
         }
     ]
+}
+
+const getUserDirections = () => {
+    return getAllDirections().filter(dir => dir.id > 2);
 }

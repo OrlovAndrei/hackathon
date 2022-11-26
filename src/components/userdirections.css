@@ -77,3 +77,23 @@
     background: white;
     padding: 1rem 0rem;
 }
+
+@media screen and (max-width: 800px) {
+    .directions-container {
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .direction {
+        padding: 0 1rem;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .direction {
+        padding: 0 0.5rem;
+        font-size: 14px;
+        height: 40px;
+    }
+}

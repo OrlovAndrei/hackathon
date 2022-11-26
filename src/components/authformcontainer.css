@@ -9,6 +9,12 @@
     box-shadow: 0 0 0 1px white;
 }
 
+@media screen and (max-width: 700px) {
+    .auth-form-container {
+        transition: none;
+    }
+}
+
 .hidden-container {
     flex-grow: 0 !important;
     box-shadow: none;

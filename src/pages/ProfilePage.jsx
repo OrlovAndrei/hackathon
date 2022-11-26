@@ -37,7 +37,9 @@ const ProfilePage = () => {
                         <img src={pen} alt=""/>
                     </button>
                     <div style={{flex: 1}}></div>
-                    <img src={avaPlaceholder} className="avatar mb-4"/>
+                    <div>
+                        <img src={avaPlaceholder} className="avatar mb-4"/>
+                    </div>
                     <div className="info-block">
                         {edit ? (
                             <Form.Group controlId="exampleForm.ControlInput1">
