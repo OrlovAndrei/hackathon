@@ -1,4 +1,4 @@
-import {ADMIN, AUTH_PAGE, MAIN_PAGE} from "../util/consts";
+import {ADMIN, AUTH_PAGE, MAIN_PAGE, PROFILE_PAGE, TREE_PAGE} from "../util/consts";
 import MainPage from "../pages/MainPage";
 import Admin from "../pages/Admin";
 import { Navigate } from "react-router-dom";

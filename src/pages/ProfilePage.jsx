@@ -9,6 +9,7 @@ import {Button, Form} from "react-bootstrap";
 import {MAIN_PAGE} from "../util/consts";
 import {useNavigate} from "react-router-dom";
 import TitleText from "../components/TitleText";
+import UserDirections from "../components/UserDirections";
 
 const ProfilePage = () => {
     const [name, setName] = useState("Имя")
@@ -64,6 +65,7 @@ const ProfilePage = () => {
                         </Button>
                     </div>
                     <TitleText text="Мои направления"/>
+                    <UserDirections/>
                 </div>
             </div>
         </PagesLayout>
