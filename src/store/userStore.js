@@ -42,4 +42,8 @@ export default class userStore {
     get UsersDirection() {
         return this._usersDirection;
     }
+
+    get Img() {
+        return this._img;
+    }
 }
