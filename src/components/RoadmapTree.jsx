@@ -4,6 +4,10 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
 import { fetchDirectionById } from "../api/directionAPI";
 import { Context } from "..";
+import "./roadmaptree.css"
+import {Button} from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
+import {PROFILE_PAGE} from "../util/consts";
 
 const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
     let bc = "red";
@@ -68,6 +72,7 @@ const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
 export default function RoadmapTree() {
     const { width, height } = window.screen;
     const { direction } = useContext(Context);
+    const navigate = useNavigate();
     let schema = require("../assets/trees/" + direction.Schema);
     return (
         <div
@@ -75,8 +80,27 @@ export default function RoadmapTree() {
             style={{
                 width: "100%",
                 height: "100vh",
+                position: 'relative',
+                overflow: 'hidden'
             }}
         >
+            <div className="tree-legend">
+                <p className="legend-text">
+                    <div className="legend-dot red-dot"></div>
+                    Обязательно
+                </p>
+                <p className="legend-text">
+                    <div className="legend-dot orange-dot"></div>
+                    Желательно
+                </p>
+                <p className="legend-text">
+                    <div className="legend-dot green-dot"></div>
+                    Рекомендуем
+                </p>
+            </div>
+            <div className="back-button-container">
+                <Button onClick={() => navigate(PROFILE_PAGE)} className="back-button px-5 py-3 rounded-pill">Назад</Button>
+            </div>
             <Tree
                 data={schema}
                 orientation="vertical"

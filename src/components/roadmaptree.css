@@ -1,0 +1,54 @@
+.tree-legend {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0.5rem;
+    padding: 1rem 2rem;
+
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 18px 40px 0px rgba(170, 201, 224, 0.42);
+}
+
+.legend-text {
+    font-size: 18px;
+    font-family: 'Comfortaa', serif;
+    color: #3AB19B;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    margin-bottom: 0.5rem;
+}
+
+.legend-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #000;
+}
+
+.red-dot {
+    background: red;
+}
+
+.orange-dot {
+    background: orange;
+}
+
+.green-dot {
+    background: green;
+}
+
+.back-button-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.5rem;
+}
+
+.back-button {
+    background: #3AB19B;
+    border: none;
+}

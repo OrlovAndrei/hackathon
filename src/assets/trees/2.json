@@ -1,0 +1,720 @@
+{
+  "name": "Backend",
+  "children": [
+    {
+      "name": "Интернет",
+      "attributes": {
+        "importance": "Обязательно",
+        "size": "big"
+      },
+      "children": [
+        {
+          "name": "Хостинг",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Домен",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "DNS",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Принцип работы браузера",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "HTTP",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        }
+      ]
+    },
+    {
+      "name": "ОС и базис",
+      "attributes": {
+        "importance": "Обязательно",
+        "size": "big"
+      },
+      "children": [
+        {
+          "name": "Терминал",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Как работают ОС",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Управление процессами",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Потоки и параллелизм",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Управление памятью",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Межпроцессное взаимодействие",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Управление I/O",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Основы POSIX",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Концепции построения сети",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Язык",
+      "attributes": {
+        "importance": "Обязательно",
+        "size": "big"
+      },
+      "children": [
+        {
+          "name": "Java",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "C#",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "PHP",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "JavaScript",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Python",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Ruby",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Rust",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Go",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        }
+      ]
+    },
+    {
+      "name": "VCS",
+      "attributes": {
+        "importance": "Обязательно",
+        "size": "small"
+      },
+      "children": [
+        {
+          "name": "Сервис хостинга проектов",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          },
+          "children": [
+            {
+              "name": "GitHub",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "GitLab",
+              "attributes": {
+                "importance": "Необязательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "Bitbucket",
+              "attributes": {
+                "importance": "Необязательно",
+                "size": "small"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Git",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Базы данных",
+      "attributes": {
+        "importance": "Обязательно",
+        "size": "big"
+      },
+      "children": [
+        {
+          "name": "Реляционные",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          },
+          "children": [
+            {
+              "name": "PostgreSQL",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "MySQL",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "MariaDB",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "MS SQL",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "Oracle",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            }
+          ]
+        },
+        {
+          "name": "NoSQL",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          },
+          "children": [
+            {
+              "name": "MongoDB",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "RethinkDB",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "CouchDB",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "DynamoDB",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Нормализация",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "ORM",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "ACID",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Транзакции",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Проблема N+1",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Теорема CAP",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        }
+      ]
+    },
+    {
+      "name": "API",
+      "attributes": {
+        "importance": "Обязательно",
+        "size": "big"
+      },
+      "children": [
+        {
+          "name": "REST",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "SOAP",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "JSON",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "JSON-RPC",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "HATEOAS",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "gRPC",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Спецификация OpenAPI",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Аутентификация",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "GraphQL",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "big"
+          },
+          "children": [
+            {
+              "name": "Apollo",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "Relay Modern",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Кэширование",
+      "attributes": {
+        "importance": "Обязательно",
+        "size": "big"
+      },
+      "children": [
+        {
+          "name": "CDN",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Сторона сервера",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          },
+          "children": [
+            {
+              "name": "Redis",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "Memcached",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Сторона клиента",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Безопасность",
+      "attributes": {
+        "importance": "Обязательно",
+        "size": "big"
+      },
+      "children": [
+        {
+          "name": "Хэш-алгоритмы",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          },
+          "children": [
+            {
+              "name": "MD5",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "Семейство SHA",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "scrypt",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "bcrypt",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            }
+          ]
+        },
+        {
+          "name": "HTTPS",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "CORS",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Политика защиты контента (CSP)",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "SSL/TLS",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "OWASP Security Risks",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Авторизация и аутентификация",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          },
+          "children": [
+            {
+              "name": "OAuth",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "JWT",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            },
+            {
+              "name": "MFA",
+              "attributes": {
+                "importance": "Желательно",
+                "size": "small"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Security-тактики",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Тестирование",
+      "attributes": {
+        "importance": "Обязательно",
+        "size": "big"
+      },
+      "children": [
+        {
+          "name": "Интеграционное тестирование",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Модульное тестирование",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Функциональное тестирование",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        }
+      ]
+    },
+    {
+      "name": "CI/CD",
+      "attributes": {
+        "importance": "Обязательно",
+        "size": "big"
+      }
+    },
+    {
+      "name": "Виртуализация",
+      "attributes": {
+        "importance": "Обязательно",
+        "size": "big"
+      },
+      "children": [
+        {
+          "name": "Docker",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "rkt",
+          "attributes": {
+            "importance": "Необязательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "LXC",
+          "attributes": {
+            "importance": "Необязательно",
+            "size": "small"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Веб-серверы",
+      "attributes": {
+        "importance": "Обязательно",
+        "size": "big"
+      },
+      "children": [
+        {
+          "name": "Nginx",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Apache",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "Caddy",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        },
+        {
+          "name": "MS IIS",
+          "attributes": {
+            "importance": "Желательно",
+            "size": "small"
+          }
+        }
+      ]
+    }
+  ]
+}
