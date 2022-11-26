@@ -1,66 +1,77 @@
 import React, {useState} from "react";
 import {Button, Container, Form} from "react-bootstrap";
 import "./authpage.css";
-import authBg from "../assets/images/background.svg";
-import authBgAlt from "../assets/images/alt-baclground.svg";
 import AuthFormContainer from "../components/AuthFormContainer";
 import PagesLayout from "../components/PagesLayout";
 import {useNavigate} from "react-router-dom";
 import {PROFILE_PAGE} from "../util/consts";
-import TitleText from "../components/TitleText";
 
 const AuthPage = () => {
     let [screen, setScreen] = useState("login");
+
+    let [loginEmail, setLoginEmail] = useState("")
+    let [loginPassword, setLoginPassword] = useState("")
+
+    let [registerName, setRegisterName] = useState("")
+    let [registerEmail, setRegisterEmail] = useState("")
+    let [registerPassword, setRegisterPassword] = useState("")
+
+    let [errorMessage, setErrorMessage] = useState(null)
 
     const navigation = useNavigate()
 
     const onScreenChange = () => {
         setScreen(scr => scr === 'login' ? 'signup' : 'login');
-        console.log(screen);
+        setErrorMessage(null)
     }
 
-    const registerHandle = () => {
+    const registerHandle = (e) => {
         navigation(PROFILE_PAGE)
+        // e.preventDefault()
+        // console.log([registerName, registerEmail, registerPassword])
     }
 
-    const loginHandle = () => {
-        navigation(PROFILE_PAGE)
+    const loginHandle = (e) => {
+        // navigation(PROFILE_PAGE)
+        e.preventDefault()
+        console.log([loginEmail, loginPassword])
+        setErrorMessage("Неверные данные")
     }
 
     let sidePage = sidepage(screen, onScreenChange);
 
     return (
         <PagesLayout>
-            <AuthFormContainer active={screen === 'login'} title="Вход" subText="или используйте почту для входа" forms={
+            <AuthFormContainer active={screen === 'login'} title="Вход" subText="или используйте почту для входа" errorMessage={errorMessage} forms={
                 <>
                     <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormEmail">
                         <div className="inner-addon">
-                            <Form.Control type="email" placeholder="E-mail"  className="auth-field"/>
+                            <Form.Control type="email" placeholder="E-mail"  className="auth-field" value={loginEmail} onChange={e => setLoginEmail(e.target.value)}/>
                         </div>
                     </Form.Group>
-                    <Form.Group className="w-100 auth-form-group" controlId="formBasicPassword">
+                    <Form.Group className="w-100 auth-form-group" controlId="authFormPassword">
                         <div className="inner-addon">
-                            <Form.Control type="password" placeholder="Пароль"  className="auth-field"/>
+                            <Form.Control type="password" placeholder="Пароль"  className="auth-field" value={loginPassword} onChange={e => setLoginPassword(e.target.value)}/>
                         </div>
                     </Form.Group>
                 </>
             } buttonText="Войти" buttonAction={loginHandle} subButtonText="Зарегистрироваться" subButtonAction={onScreenChange}/>
             {sidePage}
-            <AuthFormContainer active={screen === 'signup'} title="Создайте Аккаунт" subText="или используйте почту для регистрации" forms={
+            <AuthFormContainer active={screen === 'signup'} title="Создайте Аккаунт" subText="или используйте почту для регистрации" errorMessage={errorMessage} forms={
                 <>
-                    <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormName" >
+                    <Form.Group className="mb-2 w-100 auth-form-group" controlId="regFormName" >
                         <div className="inner-addon auth-field">
-                            <Form.Control type="text" placeholder="Имя" className="auth-field"/>
+                            <Form.Control type="text" placeholder="Имя" className="auth-field" value={registerName} onChange={e => setRegisterName(e.target.value)}/>
                         </div>
                     </Form.Group>
-                    <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormEmail">
+                    <Form.Group className="mb-2 w-100 auth-form-group" controlId="regFormEmail">
                         <div className="inner-addon">
-                            <Form.Control type="email" placeholder="E-mail"  className="auth-field"/>
+                            <Form.Control type="email" placeholder="E-mail"  className="auth-field" value={registerEmail} onChange={e => setRegisterEmail(e.target.value)}/>
                         </div>
                     </Form.Group>
-                    <Form.Group className="w-100 auth-form-group" controlId="formBasicPassword">
+                    <Form.Group className="w-100 auth-form-group" controlId="regFormPassword">
                         <div className="inner-addon">
-                            <Form.Control type="password" placeholder="Пароль"  className="auth-field"/>
+                            <Form.Control type="password" placeholder="Пароль"  className="auth-field" value={registerPassword} onChange={e => setRegisterPassword(e.target.value)}/>
                         </div>
                     </Form.Group>
                 </>

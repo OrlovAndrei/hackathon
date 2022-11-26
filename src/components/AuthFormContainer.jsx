@@ -15,6 +15,8 @@ const AuthFormContainer = (props) => {
     let subButtonText = props.subButtonText
     let subButtonAction = props.subButtonAction
 
+    let errorMessage = props.errorMessage
+
     return(
         <div className={"flex-grow-1 auth-form-container " + (active ? "" : "hidden-container")}>
             <div className="auth-sub-container">
@@ -29,7 +31,14 @@ const AuthFormContainer = (props) => {
                     <div className="w-100">
                         {forms}
                     </div>
-
+                    <div className="w-75">
+                        <p style={{
+                            fontSize: '16px',
+                            color: 'red',
+                            padding: '1rem 0 0',
+                            textAlign: 'center'
+                        }}>{errorMessage}</p>
+                    </div>
                     <div className="d-flex flex-column align-items-center w-100">
                         <Button variant="primary mt-5" type="submit" className="border-0 px-5 py-3 rounded-pill auth-submit-button" onClick={buttonAction}>
                             {buttonText}
