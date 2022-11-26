@@ -11,7 +11,6 @@ const MainPage = () => {
             let userId = localStorage.getItem("user_id");
             if (userId == null) {
                 navigate(AUTH_PAGE)
-
             }
         })
     })

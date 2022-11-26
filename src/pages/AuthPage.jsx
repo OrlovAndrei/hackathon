@@ -1,64 +1,71 @@
 import React, {useState} from "react";
 import {Button, Container, Form} from "react-bootstrap";
-import MediaAuthButton from "../components/MediaAuthButton";
 import "./authpage.css";
 import authBg from "../assets/images/background.svg";
 import authBgAlt from "../assets/images/alt-baclground.svg";
 import AuthFormContainer from "../components/AuthFormContainer";
+import PagesLayout from "../components/PagesLayout";
+import {useNavigate} from "react-router-dom";
+import {PROFILE_PAGE} from "../util/consts";
+import TitleText from "../components/TitleText";
 
 const AuthPage = () => {
     let [screen, setScreen] = useState("login");
+
+    const navigation = useNavigate()
 
     const onScreenChange = () => {
         setScreen(scr => scr === 'login' ? 'signup' : 'login');
         console.log(screen);
     }
 
+    const registerHandle = () => {
+        navigation(PROFILE_PAGE)
+    }
+
+    const loginHandle = () => {
+        navigation(PROFILE_PAGE)
+    }
+
     let sidePage = sidepage(screen, onScreenChange);
 
     return (
-        <div className="h-100 d-flex auth-bg" style={{
-            background: `url(${authBg}) center, #F1F3F4`, backgroundSize: 'cover'
-        }}>
-            <div className="m-auto d-flex justify-content-center auth-container" style={{
-                background: `url(${authBgAlt}) center`, backgroundSize: 'cover'
-            }}>
-                <AuthFormContainer active={screen === 'login'} title="Вход" subText="или используйте почту для входа" forms={
-                    <>
-                        <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormEmail">
-                            <div className="inner-addon">
-                                <Form.Control type="email" placeholder="E-mail"  className="auth-field"/>
-                            </div>
-                        </Form.Group>
-                        <Form.Group className="w-100 auth-form-group" controlId="formBasicPassword">
-                            <div className="inner-addon">
-                                <Form.Control type="password" placeholder="Пароль"  className="auth-field"/>
-                            </div>
-                        </Form.Group>
-                    </>
-                } buttonText="Войти" buttonAction={() => null} subButtonText="Зарегистрироваться" subButtonAction={onScreenChange}/>
-                {sidePage}
-                <AuthFormContainer active={screen === 'signup'} title="Создайте Аккаунт" subText="или используйте почту для регистрации" forms={
-                    <>
-                        <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormName" >
-                            <div className="inner-addon auth-field">
-                                <Form.Control type="text" placeholder="Имя" className="auth-field"/>
-                            </div>
-                        </Form.Group>
-                        <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormEmail">
-                            <div className="inner-addon">
-                                <Form.Control type="email" placeholder="E-mail"  className="auth-field"/>
-                            </div>
-                        </Form.Group>
-                        <Form.Group className="w-100 auth-form-group" controlId="formBasicPassword">
-                            <div className="inner-addon">
-                                <Form.Control type="password" placeholder="Пароль"  className="auth-field"/>
-                            </div>
-                        </Form.Group>
-                    </>
-                } buttonText="Зарегистрироваться" buttonAction={() => null} subButtonText="Войти" subButtonAction={onScreenChange}/>
-            </div>
-        </div>
+        <PagesLayout>
+            <AuthFormContainer active={screen === 'login'} title="Вход" subText="или используйте почту для входа" forms={
+                <>
+                    <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormEmail">
+                        <div className="inner-addon">
+                            <Form.Control type="email" placeholder="E-mail"  className="auth-field"/>
+                        </div>
+                    </Form.Group>
+                    <Form.Group className="w-100 auth-form-group" controlId="formBasicPassword">
+                        <div className="inner-addon">
+                            <Form.Control type="password" placeholder="Пароль"  className="auth-field"/>
+                        </div>
+                    </Form.Group>
+                </>
+            } buttonText="Войти" buttonAction={loginHandle} subButtonText="Зарегистрироваться" subButtonAction={onScreenChange}/>
+            {sidePage}
+            <AuthFormContainer active={screen === 'signup'} title="Создайте Аккаунт" subText="или используйте почту для регистрации" forms={
+                <>
+                    <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormName" >
+                        <div className="inner-addon auth-field">
+                            <Form.Control type="text" placeholder="Имя" className="auth-field"/>
+                        </div>
+                    </Form.Group>
+                    <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormEmail">
+                        <div className="inner-addon">
+                            <Form.Control type="email" placeholder="E-mail"  className="auth-field"/>
+                        </div>
+                    </Form.Group>
+                    <Form.Group className="w-100 auth-form-group" controlId="formBasicPassword">
+                        <div className="inner-addon">
+                            <Form.Control type="password" placeholder="Пароль"  className="auth-field"/>
+                        </div>
+                    </Form.Group>
+                </>
+            } buttonText="Зарегистрироваться" buttonAction={registerHandle} subButtonText="Войти" subButtonAction={onScreenChange}/>
+        </PagesLayout>
     )
 }
 

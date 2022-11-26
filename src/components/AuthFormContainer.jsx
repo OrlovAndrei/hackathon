@@ -2,6 +2,7 @@ import React from "react";
 import {Button, Form} from "react-bootstrap";
 import MediaAuthButton from "./MediaAuthButton";
 import "./authformcontainer.css";
+import TitleText from "./TitleText";
 
 const AuthFormContainer = (props) => {
     let active = props.active
@@ -18,7 +19,7 @@ const AuthFormContainer = (props) => {
         <div className={"flex-grow-1 auth-form-container " + (active ? "" : "hidden-container")}>
             <div className="auth-sub-container">
                 <Form className="d-flex flex-column align-items-center auth-form">
-                    <h2 className="mb-3 auth-header-text text-center" style={{ color: '#3AB19B'}}>{title}</h2>
+                    <TitleText text={title}/>
                     <div className="d-flex gap-2 mb-4">
                         <MediaAuthButton link="#" iconName="facebook"/>
                         <MediaAuthButton link="#" iconName="google"/>
