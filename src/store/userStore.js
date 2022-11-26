@@ -2,9 +2,12 @@ import { makeAutoObservable } from "mobx";
 
 export default class userStore {
     constructor() {
-        this._id = 0;
+        this._id = null;
         this._name = "";
-        this._isAuth = false;
+        this._login = "";
+        this._about = "";
+        this._img = "";
+        this._usersDirection = [];
         makeAutoObservable(this);
     }
 
@@ -13,11 +16,15 @@ export default class userStore {
     }
 
     setName(name) {
-        this._id = name;
+        this._name = name;
     }
 
-    setIsAuth(bool) {
-        this._id = bool;
+    setAbout(about) {
+        this._about = about;
+    }
+
+    setUsersDirection(direction) {
+        this._usersDirection = direction;
     }
 
     get id() {
@@ -28,7 +35,15 @@ export default class userStore {
         return this._name;
     }
 
-    get isAuth() {
-        return this._isAuth;
+    get About() {
+        return this._About;
+    }
+
+    get UsersDirection() {
+        return this._usersDirection;
+    }
+
+    get Img() {
+        return this._img;
     }
 }
