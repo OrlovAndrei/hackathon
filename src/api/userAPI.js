@@ -28,7 +28,7 @@ export const editAbout = async (id, about) => {
     return data;
 };
 
-export const fetchUsersDirection = async (usersId) => {
+export const fetchUsersDirections = async (usersId) => {
     const { data } = await host.get("api/user/direction", {
         params: { usersId },
     });

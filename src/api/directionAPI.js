@@ -6,6 +6,6 @@ export const fetchDirections = async () => {
 };
 
 export const fetchDirectionById = async (id) => {
-    const { data } = await host.get("api/direction/" + id);
+    const { data } = await host.get("api/direction", { params: { id } });
     return data;
 };

@@ -8,6 +8,6 @@ export const fetchCompetence = async (name) => {
 import { host } from "./index";
 
 export const setKnowledgeLevel = async (level) => {
-    const { data } = await host.put("api/direction", level);
+    const { data } = await host.put("api/level", level);
     return data;
 };
