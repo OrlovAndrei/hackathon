@@ -7,17 +7,11 @@
     align-items: stretch;
 }
 
-@media screen and (max-width: 1300px) {
-    .profile-wrapper {
-        padding: 0.5rem;
-    }
-}
-
 .profile-info {
     flex: 1;
     position: relative;
+    overflow-y: auto;
 }
-
 
 .profile-directions-container {
     background: white;
@@ -25,6 +19,12 @@
     flex: 2;
 
     overflow-y: auto;
+}
+
+@media screen and (max-width: 1300px) {
+    .profile-directions-container {
+        margin: 0.5rem;
+    }
 }
 
 .edit-button {
