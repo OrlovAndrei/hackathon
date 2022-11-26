@@ -11,6 +11,7 @@
 .direction {
     max-width: 350px;
     height: 60px;
+    position: relative;
 
     border: 3px solid rgb(61, 61, 61);
     background: rgb(61, 61, 61, 0.2);
@@ -24,6 +25,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.del-dir-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: none;
+
+    position: absolute;
+    top: -12px;
+    right: -12px;
+}
+
+.direction:hover .del-dir-btn {
+    display: flex;
+}
+
+.del-dir-btn:hover {
+    background: red;
 }
 
 .green {

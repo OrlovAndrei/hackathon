@@ -1,13 +1,20 @@
 import React, {forwardRef, useEffect, useState} from "react";
 import "./userdirections.css"
 import {Button, Dropdown, Form} from "react-bootstrap";
+import closeIcon from "../assets/images/x.svg"
 
 const UserDirections = () => {
     const [directions, setDirections] = useState([])
 
     useEffect(() => {
-        setDirections(getUserDirections)
+        console.log("set dir")
+        setDirections(getUserDirections())
     }, [])
+
+    useEffect(() => {
+        console.log("save dir")
+        localStorage.setItem("UserDirections", JSON.stringify(directions));
+    }, [directions])
 
     const addNewDirection = (dirId) => {
         let alreadyExist = directions.find(dir => dir.id === Number(dirId)) !== undefined;
@@ -19,13 +26,23 @@ const UserDirections = () => {
         })
     }
 
+    const removeDirection = (dirId) => {
+        setDirections(d => d.filter(d => d.id !== dirId))
+    }
+
     const AddButton = createAddButton(addNewDirection)
 
     return (
         <div className="directions-container">
+            {directions.length === 0 && (
+                <p className="m-0" style={{fontSize: '24px'}}>Добавьте новое направление!</p>
+            )}
             {directions.map(d => (
                 <div className={"direction " + d.color} key={d.id}>
                     <div>{d.name}</div>
+                    <button onClick={() => removeDirection(d.id)} className="del-dir-btn">
+                        <img src={closeIcon} alt=""/>
+                    </button>
                 </div>
             ))}
             {AddButton}
@@ -122,5 +139,9 @@ const getAllDirections = () => {
 }
 
 const getUserDirections = () => {
-    return getAllDirections().filter(dir => dir.id > 2);
+    let savedDirections = localStorage.getItem("UserDirections")
+
+    if (savedDirections == null) return []
+
+    return JSON.parse(savedDirections)
 }
