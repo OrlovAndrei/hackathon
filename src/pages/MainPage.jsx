@@ -1,12 +1,30 @@
-import React from "react";
-import {NavLink} from "react-router-dom";
+import React, {useEffect} from "react";
+import {AUTH_PAGE} from "../util/consts";
+import bg from "../assets/images/background.svg"
+import {useNavigate} from "react-router-dom";
 
 const MainPage = () => {
+    let navigate = useNavigate()
+
+    useEffect(() => {
+        setTimeout(() => {
+            let userId = localStorage.getItem("user_id");
+            if (userId == null) {
+                navigate(AUTH_PAGE)
+
+            }
+        })
+    })
+
     return (
-        <>
-            <div>MainPage</div>
-            <NavLink to="/auth">login</NavLink>
-        </>
+        <div style={{
+            width: '100vw',
+            height: '100vh',
+            background: `url(${bg}) center, white`,
+            backgroundSize: 'cover'
+        }}>
+
+        </div>
     )
 };
 

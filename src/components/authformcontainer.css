@@ -1,0 +1,79 @@
+.auth-form-container {
+    position: relative;
+    transition: all 0.7s ease-out;
+    overflow: hidden;
+    flex: 2;
+    height: 100%;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 0 0 1px white;
+}
+
+@media screen and (max-width: 1000px) {
+    .auth-form-container {
+        border-radius: 0;
+    }
+}
+
+.hidden-container {
+    flex-grow: 0 !important;
+    box-shadow: none;
+}
+
+
+
+.auth-sub-container {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.auth-form {
+    min-width: 360px;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 400px) {
+    .auth-form {
+        min-width: 100%;
+    }
+}
+
+.auth-header-text {
+    font-family: 'Comfortaa', serif;
+    font-weight: 400;
+    font-size: 27px;
+}
+
+
+.auth-submit-button {
+    background: #3AB19B;
+    text-transform: uppercase;
+    font-family: 'Roboto', serif;
+    font-weight: 900;
+}
+
+@media screen and (max-width: 400px) {
+    .auth-submit-button {
+        width: 100%;
+        padding-left: 0.5rem!important;
+        padding-right: 0.5rem !important;
+    }
+}
+
+.sub-button {
+    display: none;
+
+    margin-top: 0.5rem;
+}
+
+@media screen and (max-width: 700px) {
+    .sub-button {
+        display: block;
+    }
+}

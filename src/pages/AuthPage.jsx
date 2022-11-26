@@ -4,6 +4,7 @@ import MediaAuthButton from "../components/MediaAuthButton";
 import "./authpage.css";
 import authBg from "../assets/images/background.svg";
 import authBgAlt from "../assets/images/alt-baclground.svg";
+import AuthFormContainer from "../components/AuthFormContainer";
 
 const AuthPage = () => {
     let [screen, setScreen] = useState("login");
@@ -22,68 +23,40 @@ const AuthPage = () => {
             <div className="m-auto d-flex justify-content-center auth-container" style={{
                 background: `url(${authBgAlt}) center`, backgroundSize: 'cover'
             }}>
-                <div className={"flex-grow-1 auth-register-container " + (screen === "login" ? "" : "hidden-container")}>
-                    <div className="auth-sub-container">
-                        <Form className="d-flex flex-column align-items-center auth-form">
-                            <h2 className="mb-3 auth-header-text" style={{ color: '#3AB19B'}}>Вход</h2>
-                            <div className="d-flex gap-2 mb-4">
-                                <MediaAuthButton link="#" iconName="facebook"/>
-                                <MediaAuthButton link="#" iconName="google"/>
-                                <MediaAuthButton link="#" iconName="linkedin"/>
+                <AuthFormContainer active={screen === 'login'} title="Вход" subText="или используйте почту для входа" forms={
+                    <>
+                        <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormEmail">
+                            <div className="inner-addon">
+                                <Form.Control type="email" placeholder="E-mail"  className="auth-field"/>
                             </div>
-                            <p style={{fontSize: '11px', color: '#989B9A'}}>или используйте свою почту для входа</p>
-                            <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormEmail">
-                                <div className="inner-addon">
-                                    <Form.Control type="email" placeholder="E-mail"  className="auth-field"/>
-                                </div>
-                            </Form.Group>
-                            <Form.Group className="w-100 auth-form-group" controlId="formBasicPassword">
-                                <div className="inner-addon">
-                                    <Form.Control type="password" placeholder="Пароль"  className="auth-field"/>
-                                </div>
-                            </Form.Group>
-
-                            <a href="#" className="mt-3 text-secondary">Забыли пароль?</a>
-
-                            <Button variant="primary mt-5" type="submit" className="border-0 px-5 py-3 rounded-pill auth-submit-button">
-                                Войти
-                            </Button>
-                        </Form>
-                    </div>
-                </div>
+                        </Form.Group>
+                        <Form.Group className="w-100 auth-form-group" controlId="formBasicPassword">
+                            <div className="inner-addon">
+                                <Form.Control type="password" placeholder="Пароль"  className="auth-field"/>
+                            </div>
+                        </Form.Group>
+                    </>
+                } buttonText="Войти" buttonAction={() => null} subButtonText="Зарегистрироваться" subButtonAction={onScreenChange}/>
                 {sidePage}
-                <div className={"flex-grow-1 auth-register-container " + (screen === "signup" ? "" : "hidden-container")}>
-                    <div className="auth-sub-container">
-                        <Form className="d-flex flex-column align-items-center auth-form">
-                            <h2 className="mb-3 auth-header-text" style={{ color: '#3AB19B'}}>Создайте Аккаунт</h2>
-                            <div className="d-flex gap-2 mb-4">
-                                <MediaAuthButton link="#" iconName="facebook"/>
-                                <MediaAuthButton link="#" iconName="google"/>
-                                <MediaAuthButton link="#" iconName="linkedin"/>
+                <AuthFormContainer active={screen === 'signup'} title="Создайте Аккаунт" subText="или используйте почту для регистрации" forms={
+                    <>
+                        <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormName" >
+                            <div className="inner-addon auth-field">
+                                <Form.Control type="text" placeholder="Имя" className="auth-field"/>
                             </div>
-                            <p style={{fontSize: '11px', color: '#989B9A'}}>или используйте свою почту для регистрации</p>
-                            <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormName" >
-                                <div className="inner-addon auth-field">
-                                    <Form.Control type="text" placeholder="Имя" className="auth-field"/>
-                                </div>
-                            </Form.Group>
-                            <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormEmail">
-                                <div className="inner-addon">
-                                    <Form.Control type="email" placeholder="E-mail"  className="auth-field"/>
-                                </div>
-                            </Form.Group>
-                            <Form.Group className="w-100 auth-form-group" controlId="formBasicPassword">
-                                <div className="inner-addon">
-                                    <Form.Control type="password" placeholder="Пароль"  className="auth-field"/>
-                                </div>
-                            </Form.Group>
-
-                            <Button variant="primary mt-5" type="submit" className="border-0 px-5 py-3 rounded-pill auth-submit-button">
-                                Зарегистрироваться
-                            </Button>
-                        </Form>
-                    </div>
-                </div>
+                        </Form.Group>
+                        <Form.Group className="mb-2 w-100 auth-form-group" controlId="authFormEmail">
+                            <div className="inner-addon">
+                                <Form.Control type="email" placeholder="E-mail"  className="auth-field"/>
+                            </div>
+                        </Form.Group>
+                        <Form.Group className="w-100 auth-form-group" controlId="formBasicPassword">
+                            <div className="inner-addon">
+                                <Form.Control type="password" placeholder="Пароль"  className="auth-field"/>
+                            </div>
+                        </Form.Group>
+                    </>
+                } buttonText="Зарегистрироваться" buttonAction={() => null} subButtonText="Войти" subButtonAction={onScreenChange}/>
             </div>
         </div>
     )
