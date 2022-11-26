@@ -22,7 +22,9 @@
 .profile-directions-container {
     background: white;
     border-radius: 10px;
-    flex: 2
+    flex: 2;
+
+    overflow-y: auto;
 }
 
 .edit-button {
@@ -106,7 +108,7 @@
     align-items: center;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (orientation: portrait) and (max-width: 800px) {
     .profile-wrapper {
         flex-direction: column;
     }
@@ -154,5 +156,20 @@
 
     .about::after {
         display: none;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .name {
+        margin-bottom: 0;
+    }
+
+    .name-textinput {
+        margin-bottom: 0.5rem;
+    }
+
+    .avatar {
+        width: 60px;
+        height: 60px;
     }
 }
