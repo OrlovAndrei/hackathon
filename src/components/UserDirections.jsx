@@ -2,9 +2,12 @@ import React, {forwardRef, useEffect, useState} from "react";
 import "./userdirections.css"
 import {Button, Dropdown, Form} from "react-bootstrap";
 import closeIcon from "../assets/images/x.svg"
+import {useNavigate} from "react-router-dom";
+import {TREE_PAGE} from "../util/consts";
 
 const UserDirections = () => {
     const [directions, setDirections] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         console.log("set dir")
@@ -30,6 +33,11 @@ const UserDirections = () => {
         setDirections(d => d.filter(d => d.id !== dirId))
     }
 
+    const openTree = (treeId) => {
+        localStorage.setItem("CurrentTreeId", treeId)
+        navigate(TREE_PAGE)
+    }
+
     const AddButton = createAddButton(addNewDirection)
 
     return (
@@ -38,12 +46,12 @@ const UserDirections = () => {
                 <p className="m-0" style={{fontSize: '24px'}}>Добавьте новое направление!</p>
             )}
             {directions.map(d => (
-                <div className={"direction " + d.color} key={d.id}>
-                    <div>{d.name}</div>
+                <button onClick={() => openTree(d.id)} className={"direction " + d.color} key={d.id}>
+                    {d.name}
                     <button onClick={() => removeDirection(d.id)} className="del-dir-btn">
                         <img src={closeIcon} alt=""/>
                     </button>
-                </div>
+                </button>
             ))}
             {AddButton}
         </div>
