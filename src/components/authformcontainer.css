@@ -9,12 +9,6 @@
     box-shadow: 0 0 0 1px white;
 }
 
-@media screen and (max-width: 1000px) {
-    .auth-form-container {
-        border-radius: 0;
-    }
-}
-
 .hidden-container {
     flex-grow: 0 !important;
     box-shadow: none;
@@ -28,6 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
 }
 
 
@@ -36,6 +31,12 @@
     min-width: 360px;
     padding: 1rem;
     overflow: hidden;
+}
+
+@media screen and (max-width: 1300px) {
+    .auth-form-container {
+        border-radius: 0;
+    }
 }
 
 @media screen and (max-width: 400px) {

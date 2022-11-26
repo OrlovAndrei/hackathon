@@ -23,7 +23,7 @@
 
 @media screen and (max-width: 1300px) {
     .profile-directions-container {
-        margin: 0.5rem;
+        border-radius: 0;
     }
 }
 
@@ -119,9 +119,11 @@
     }
 
     .profile-info {
+        padding-top: 0.5rem;
         flex-direction: row !important;
         gap: 2rem;
         flex-grow: 0;
+        overflow-y: unset;
     }
 
     .avatar {
