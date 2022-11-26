@@ -20,7 +20,7 @@ export default class userStore {
     }
 
     setAbout(about) {
-        this._id = about;
+        this._about = about;
     }
 
     setUsersDirection(direction) {
