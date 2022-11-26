@@ -1,9 +1,8 @@
+import { observer } from "mobx-react-lite";
 import React, { useContext, useEffect, useState } from "react";
 import Tree from "react-d3-tree";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Popover from "react-bootstrap/Popover";
-import { fetchDirectionById } from "../api/directionAPI";
 import { Context } from "..";
+import TreeItem from "./TreeItem";
 
 const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
     let bc = "red";
@@ -32,43 +31,16 @@ const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
                 ry="5"
             />
             <foreignObject width={200} height={50} x={-100}>
-                <OverlayTrigger
-                    trigger="hover"
-                    placement="top"
-                    overlay={
-                        <Popover id={`popover-positioned-`}>
-                            <Popover.Header as="h3">{`Popover `}</Popover.Header>
-                            <Popover.Body>
-                                <strong>Holy guacamole!</strong> Check this
-                                info.
-                            </Popover.Body>
-                        </Popover>
-                    }
-                >
-                    <div
-                        style={{
-                            width: "auto",
-                            height: 50,
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}
-                        onClick={toggleNode}
-                    >
-                        <text fill="black" strokeWidth="1" dx="0">
-                            {nodeDatum.name}
-                        </text>
-                    </div>
-                </OverlayTrigger>
+                <TreeItem nodeDatum={nodeDatum} toggleNode={toggleNode} />
             </foreignObject>
         </g>
     );
 };
 
-export default function RoadmapTree() {
+const RoadmapTree = observer(() => {
     const { width, height } = window.screen;
     const { direction } = useContext(Context);
-    let schema = require("../assets/trees/" + direction.Schema);
+    const schema = require("../assets/trees/" + direction.Schema);
     return (
         <div
             id="treeWrapper"
@@ -91,4 +63,6 @@ export default function RoadmapTree() {
             />
         </div>
     );
-}
+});
+
+export default RoadmapTree;
