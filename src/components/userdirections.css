@@ -1,0 +1,79 @@
+.directions-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+
+    margin-top: 3rem;
+    padding: 0 2rem;
+}
+
+.direction {
+    max-width: 350px;
+    height: 60px;
+
+    border: 3px solid rgb(61, 61, 61);
+    background: rgb(61, 61, 61, 0.2);
+    color: rgb(61, 61, 61);
+
+    font-size: 24px;
+
+    border-radius: 1rem;
+    padding: 0 3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.green {
+    border-color: #2A9D8F;
+    background: rgba(42, 157, 143, 0.2);
+    color:  #2A9D8F;
+}
+
+.red {
+    border-color: rgb(252, 61, 61);
+    background: rgba(252, 61, 61, 0.2);
+    color: rgb(252, 61, 61);
+}
+
+.orange {
+    border-color: #E9C46A;
+    background: rgba(233, 196, 106, 0.2);
+    color: #E9C46A;
+}
+
+.add-direction-btn {
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    color: #989B9A;
+    font-weight: bold;
+}
+
+.add-direction-btn:hover {
+    background: #2A9D8F;
+    color: white;
+}
+
+.add-btn-search-field {
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+.add-btn-menu {
+    background: white;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0px 16px 33px 0px rgba(147, 195, 202, 0.4);
+}
+
+.add-btn-menu-list {
+    border-top: 1px solid #e6e8ea;
+    background: white;
+    padding: 1rem 0rem;
+}

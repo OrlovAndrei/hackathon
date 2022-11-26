@@ -13,7 +13,7 @@ const MainPage = () => {
                 navigate(AUTH_PAGE)
             }
         })
-    })
+    }, [])
 
     return (
         <div style={{
