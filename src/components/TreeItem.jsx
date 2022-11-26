@@ -1,10 +1,17 @@
 import React from "react";
-import { Overlay, Tooltip, Popover, Button } from "react-bootstrap";
+import {
+    Overlay,
+    Popover,
+    Button,
+    ProgressBar,
+    Container,
+} from "react-bootstrap";
 import { useRef, useState } from "react";
 
 const TreeItem = ({ nodeDatum, toggleNode }) => {
     const [show, setShow] = useState(false);
     const target = useRef(null);
+    const [level, seLevel] = useState((Math.random() * 100).toFixed(2));
 
     return (
         <>
@@ -37,10 +44,18 @@ const TreeItem = ({ nodeDatum, toggleNode }) => {
                         <Popover.Header as="h3">
                             {nodeDatum.name}
                         </Popover.Header>
-                        <Popover.Body>
-                            Уровень владения {(Math.random() * 100).toFixed(2)}%
-                        </Popover.Body>
-                        <Button className="m-1">Подробности</Button>
+                        <Popover.Body>Уровень владения {level}%</Popover.Body>
+                        <Container className="m-1">
+                            {" "}
+                            {level < 33 ? (
+                                <ProgressBar variant="danger" now={level} />
+                            ) : level < 66 ? (
+                                <ProgressBar variant="warning" now={level} />
+                            ) : (
+                                <ProgressBar variant="success" now={level} />
+                            )}
+                        </Container>
+                        <Button className="m-1 color-red">Подробности</Button>
                     </Popover>
                 )}
             </Overlay>
