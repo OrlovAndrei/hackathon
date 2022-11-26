@@ -1,7 +1,8 @@
 import React from "react";
+import RoadmapTree from "../components/RoadmapTree";
 
 const TreePage = () => {
-    return <div></div>;
+    return <RoadmapTree />;
 };
 
 export default TreePage;

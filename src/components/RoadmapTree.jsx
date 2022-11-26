@@ -1,127 +1,111 @@
-import React from "react";
+import React, { useState } from "react";
 import Tree from "react-d3-tree";
 
-const debugData = [
-    {
-        name: "Accounts",
-        children: [
-            {
-                name: "Dev - SOC Log Aggregator zzc",
-                children: [
-                    {
-                        name: "FullAWSAccess",
-                    },
-                ],
+const data = {
+    name: "Frontend",
+    children: [
+        {
+            name: "HTML",
+            attributes: {
+                importance: "Обязательно",
             },
-            {
-                name: "IL-NX-Default-Dev zzf",
-                children: [
-                    {
-                        name: "FullAWSAccess",
+            children: [
+                {
+                    name: "CSS",
+                    attributes: {
+                        importance: "Желательно",
                     },
-                ],
-            },
-            {
-                name: "The Knights of Ni zzd",
-                children: [
-                    {
-                        name: "FullAWSAccess",
+                    children: [
+                        {
+                            name: "Sass",
+                            attributes: {
+                                importance: "Необязательно",
+                            },
+                        },
+                    ],
+                },
+                {
+                    name: "Framework",
+                    attributes: {
+                        importance: "Желательно",
                     },
-                ],
-            },
-            {
-                name: "Dev - Cloud Testing zzj",
-                children: [
-                    {
-                        name: "FullAWSAccess",
-                    },
-                ],
-            },
-            {
-                name: "Dev - Turbot zza",
-                children: [
-                    {
-                        name: "FullAWSAccess",
-                    },
-                ],
-            },
-            {
-                name: "Dev - Cloud Management zzb",
-                children: [
-                    {
-                        name: "FullAWSAccess",
-                    },
-                    {
-                        name: "RestrictAMItoVPC_1",
-                    },
-                ],
-            },
-            {
-                name: "Prod - AWS Organizations (Secondary) zze",
-                children: [
-                    {
-                        name: "FullAWSAccess",
-                    },
-                ],
-            },
-            {
-                name: "Dev - testing app zzh",
-                children: [
-                    {
-                        name: "FullAWSAccess",
-                    },
-                ],
-            },
-            {
-                name: "Dev - Cloud Security Monitoring zzk",
-                children: [
-                    {
-                        name: "FullAWSAccess",
-                    },
-                ],
-            },
-            {
-                name: "EC-Default Dev Collab zzg",
-                children: [
-                    {
-                        name: "FullAWSAccess",
-                    },
-                ],
-            },
-        ],
-    },
-];
-
-const containerStyles = {
-    width: "100%",
-    height: "100vh",
+                    children: [
+                        {
+                            name: "React",
+                            attributes: {
+                                importance: "Необязательно",
+                            },
+                        },
+                    ],
+                },
+            ],
+        },
+    ],
 };
 
-export default class RoadmapTree extends React.PureComponent {
-    state = {};
-
-    componentDidMount() {
-        const dimensions = this.treeContainer.getBoundingClientRect();
-        this.setState({
-            translate: {
-                x: dimensions.width / 2,
-                y: dimensions.height / 2,
-            },
-        });
+const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
+    let bc = "red";
+    switch (nodeDatum.attributes?.importance) {
+        case "Обязательно":
+            bc = "red";
+            break;
+        case "Желательно":
+            bc = "orange";
+            break;
+        case "Необязательно":
+            bc = "green";
+            break;
+        default:
+            break;
     }
+    return (
+        <g>
+            <rect
+                width="100"
+                height="50"
+                y="-25"
+                stroke={bc}
+                fill="white"
+                rx="5"
+                ry="5"
+            />
+            <foreignObject width={100} height={50} y={-25}>
+                <div
+                    style={{
+                        width: 100,
+                        height: 50,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                    onClick={toggleNode}
+                >
+                    <text fill="black" strokeWidth="1" dx="40">
+                        {nodeDatum.name}
+                    </text>
+                </div>
+            </foreignObject>
+        </g>
+    );
+};
 
-    render() {
-        return (
-            <div
-                style={containerStyles}
-                ref={(tc) => (this.treeContainer = tc)}
-            >
-                <Tree
-                    data={debugData}
-                    translate={this.state.translate}
-                    orientation={"horizontal"}
-                />
-            </div>
-        );
-    }
+export default function RoadmapTree() {
+    const { width, height } = window.screen;
+    return (
+        <div
+            id="treeWrapper"
+            style={{
+                width: "100%",
+                height: "100vh",
+            }}
+        >
+            <Tree
+                data={data}
+                orientation="horizontal"
+                renderCustomNodeElement={renderRectSvgNode}
+                enableLegacyTransitions={true}
+                translate={{ x: width / 4, y: height / 3 }}
+            />
+        </div>
+    );
 }
