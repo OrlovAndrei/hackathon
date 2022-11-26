@@ -10,7 +10,7 @@ export default class userStore {
         this._schema = schema;
     }
 
-    get schema() {
+    get Schema() {
         return this._schema;
     }
 }

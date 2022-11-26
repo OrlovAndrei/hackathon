@@ -1,67 +1,82 @@
-import React, {forwardRef, useEffect, useState} from "react";
-import "./userdirections.css"
-import {Button, Dropdown, Form} from "react-bootstrap";
-import closeIcon from "../assets/images/x.svg"
-import {useNavigate} from "react-router-dom";
-import {TREE_PAGE} from "../util/consts";
+import React, { forwardRef, useContext, useEffect, useState } from "react";
+import "./userdirections.css";
+import { Button, Dropdown, Form } from "react-bootstrap";
+import closeIcon from "../assets/images/x.svg";
+import { useNavigate } from "react-router-dom";
+import { TREE_PAGE } from "../util/consts";
+import { Context } from "..";
 
 const UserDirections = () => {
-    const [directions, setDirections] = useState([])
-    const navigate = useNavigate()
+    const [directions, setDirections] = useState([]);
+    const navigate = useNavigate();
+    const { direction } = useContext(Context);
 
     useEffect(() => {
-        console.log("set dir")
-        setDirections(getUserDirections())
-    }, [])
+        console.log("set dir");
+        setDirections(getUserDirections());
+    }, []);
 
     useEffect(() => {
-        console.log("save dir")
+        console.log("save dir");
         localStorage.setItem("UserDirections", JSON.stringify(directions));
-    }, [directions])
+    }, [directions]);
 
     const addNewDirection = (dirId) => {
-        let alreadyExist = directions.find(dir => dir.id === Number(dirId)) !== undefined;
-        if (alreadyExist) return
+        let alreadyExist =
+            directions.find((dir) => dir.id === Number(dirId)) !== undefined;
+        if (alreadyExist) return;
 
-        let newDirection = getAllDirections().find(dir => dir.id === Number(dirId))
-        setDirections(dirs => {
-            return [...dirs.filter(dir => dir.id !== dirId), newDirection]
-        })
-    }
+        let newDirection = getAllDirections().find(
+            (dir) => dir.id === Number(dirId)
+        );
+        setDirections((dirs) => {
+            return [...dirs.filter((dir) => dir.id !== dirId), newDirection];
+        });
+    };
 
     const removeDirection = (dirId) => {
-        setDirections(d => d.filter(d => d.id !== dirId))
-    }
+        setDirections((d) => d.filter((d) => d.id !== dirId));
+    };
 
     const openTree = (treeId) => {
-        localStorage.setItem("CurrentTreeId", treeId)
-        navigate(TREE_PAGE)
-    }
+        direction.setSchema(treeId + ".json");
+        localStorage.setItem("CurrentTreeId", treeId);
+        navigate(TREE_PAGE);
+    };
 
-    const AddButton = createAddButton(addNewDirection)
+    const AddButton = createAddButton(addNewDirection);
 
     return (
         <div className="directions-container">
             {directions.length === 0 && (
-                <p className="m-0" style={{fontSize: '24px'}}>Добавьте новое направление!</p>
+                <p className="m-0" style={{ fontSize: "24px" }}>
+                    Добавьте новое направление!
+                </p>
             )}
-            {directions.map(d => (
-                <button onClick={() => openTree(d.id)} className={"direction " + d.color} key={d.id}>
+            {directions.map((d) => (
+                <button
+                    onClick={() => openTree(d.id)}
+                    className={"direction " + d.color}
+                    key={d.id}
+                >
                     {d.name}
-                    <button onClick={() => removeDirection(d.id)} className="del-dir-btn">
-                        <img src={closeIcon} alt=""/>
+                    <button
+                        onClick={() => removeDirection(d.id)}
+                        className="del-dir-btn"
+                    >
+                        <img src={closeIcon} alt="" />
                     </button>
                 </button>
             ))}
             {AddButton}
         </div>
-    )
-}
+    );
+};
 
-export default UserDirections
+export default UserDirections;
 
 const createAddButton = (onSelectCallback) => {
-    let allDirections = getAllDirections()
+    let allDirections = getAllDirections();
 
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
         <button
@@ -77,8 +92,8 @@ const createAddButton = (onSelectCallback) => {
     ));
 
     const CustomMenu = React.forwardRef(
-        ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
-            const [value, setValue] = useState('');
+        ({ children, style, className, "aria-labelledby": labeledBy }, ref) => {
+            const [value, setValue] = useState("");
 
             return (
                 <div
@@ -97,59 +112,69 @@ const createAddButton = (onSelectCallback) => {
                     <ul className="list-unstyled add-btn-menu-list">
                         {React.Children.toArray(children).filter(
                             (child) =>
-                                !value || child.props.children.toLowerCase().startsWith(value.toLowerCase()),
+                                !value ||
+                                child.props.children
+                                    .toLowerCase()
+                                    .startsWith(value.toLowerCase())
                         )}
                     </ul>
                 </div>
             );
-        },
+        }
     );
 
     return (
         <Dropdown onSelect={onSelectCallback}>
-            <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components"/>
+            <Dropdown.Toggle
+                as={CustomToggle}
+                id="dropdown-custom-components"
+            />
 
-            <Dropdown.Menu as={CustomMenu} className="add-btn-menu" >
-                {allDirections.map(dir => <Dropdown.Item key={dir.id} eventKey={dir.id}>{dir.name}</Dropdown.Item>)}
+            <Dropdown.Menu as={CustomMenu} className="add-btn-menu">
+                {allDirections.map((dir) => (
+                    <Dropdown.Item key={dir.id} eventKey={dir.id}>
+                        {dir.name}
+                    </Dropdown.Item>
+                ))}
             </Dropdown.Menu>
         </Dropdown>
-    )
-}
+    );
+};
 
 const getAllDirections = () => {
     return [
         {
-            name: 'Front-End',
-            color: '',
-            id: 1
+            name: "Front-End",
+            color: "",
+            id: 1,
         },
         {
-            name: 'Back-End',
-            color: 'green',
-            id: 2
+            name: "Back-End",
+            color: "green",
+            id: 2,
         },
         {
-            name: 'Дизайн',
-            color: 'orange',
-            id: 3
+            name: "Дизайн",
+            color: "orange",
+            id: 3,
         },
         {
-            name: 'Тестирование',
-            color: 'orange',
-            id: 4
+            name: "Тестирование",
+            color: "orange",
+            id: 4,
         },
         {
-            name: 'Dev-Ops',
-            color: 'red',
-            id: 5
-        }
-    ]
-}
+            name: "Dev-Ops",
+            color: "red",
+            id: 5,
+        },
+    ];
+};
 
 const getUserDirections = () => {
-    let savedDirections = localStorage.getItem("UserDirections")
+    let savedDirections = localStorage.getItem("UserDirections");
 
-    if (savedDirections == null) return []
+    if (savedDirections == null) return [];
 
-    return JSON.parse(savedDirections)
-}
+    return JSON.parse(savedDirections);
+};

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Tree from "react-d3-tree";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
 import { fetchDirectionById } from "../api/directionAPI";
+import { Context } from "..";
 
 const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
     let bc = "red";
@@ -64,10 +65,10 @@ const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
     );
 };
 
-export default function RoadmapTree(directionId) {
+export default function RoadmapTree() {
     const { width, height } = window.screen;
-
-    let schema = require("../assets/trees/frontend.json");
+    const { direction } = useContext(Context);
+    let schema = require("../assets/trees/" + direction.Schema);
     return (
         <div
             id="treeWrapper"
