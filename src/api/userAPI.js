@@ -1,7 +1,8 @@
 import { host } from "./index";
 
-export const registration = async (login, password) => {
+export const registration = async (name, login, password) => {
     const { data } = await host.post("api/user/registration", {
+        name,
         login,
         password,
     });
