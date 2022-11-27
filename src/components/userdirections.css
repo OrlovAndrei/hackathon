@@ -68,6 +68,12 @@
     color: #E9C46A;
 }
 
+.purple {
+    border-color: #e56ae9;
+    background: rgba(205, 106, 233, 0.2);
+    color: #d26ae9;
+}
+
 .add-direction-btn {
     border: none;
     width: 32px;

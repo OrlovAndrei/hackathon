@@ -1,4 +1,4 @@
-const serverUrl = process.env.SERVER_HOST || 'http://localhost:5000';
+const serverUrl = 'http://codemonkey-api.vega-project.ru' || 'http://localhost:5000';
 
 console.log("Server host now is " + serverUrl)
 
@@ -11,6 +11,22 @@ export const authenticate = (email, password) => {
     },
     //make sure to serialize your JSON body
     body: JSON.stringify({
+      email: email,
+      password: password
+    })
+  }).then(response => response.json())
+}
+
+export const register = (name, email, password) => {
+  return fetch(serverUrl + '/users', {
+    method: "post",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    //make sure to serialize your JSON body
+    body: JSON.stringify({
+      name: name,
       email: email,
       password: password
     })

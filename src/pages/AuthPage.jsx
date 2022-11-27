@@ -5,7 +5,7 @@ import AuthFormContainer from "../components/AuthFormContainer";
 import PagesLayout from "../components/PagesLayout";
 import {useNavigate} from "react-router-dom";
 import {PROFILE_PAGE} from "../util/consts";
-import {authenticate} from "../util/network";
+import {authenticate, register} from "../util/network";
 
 const AuthPage = () => {
     let [screen, setScreen] = useState("login");
@@ -27,9 +27,22 @@ const AuthPage = () => {
     }
 
     const registerHandle = (e) => {
-        navigation(PROFILE_PAGE)
-        // e.preventDefault()
-        // console.log([registerName, registerEmail, registerPassword])
+        e.preventDefault()
+        console.log([registerName, registerEmail, registerPassword])
+        if (registerName == "" || registerEmail == "" || registerPassword == "") {
+            setErrorMessage("Заполните все поля")
+            return
+        }
+        register(registerName, registerEmail, registerPassword).then(value => {
+            if (value.id) {
+                localStorage.setItem("user_id", value.id)
+                navigation(PROFILE_PAGE)
+            } else if (value.message) {
+                setErrorMessage(value.message)
+            } else {
+                setErrorMessage("Попробуйте еще раз")
+            }
+        }).catch(err => setErrorMessage(err))
     }
 
     const loginHandle = async (e) => {
@@ -37,7 +50,11 @@ const AuthPage = () => {
         console.log([loginEmail, loginPassword])
         authenticate(loginEmail, loginPassword).then(json => {
             if (json.status !== 'ok') {
-                setErrorMessage("Неверные данные")
+                if (json.message) {
+                    setErrorMessage(json.message)
+                } else {
+                    setErrorMessage("Неверные данные")
+                }
             } else {
                 localStorage.setItem("user_id", json.user_id)
                 navigation(PROFILE_PAGE)
