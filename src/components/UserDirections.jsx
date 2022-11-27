@@ -47,7 +47,7 @@ const UserDirections = (props) => {
     const openTree = (schema) => {
         if (!schema) return
         direction.setSchema(schema);
-        console.log(schema)
+        // console.log(schema)
         navigate(TREE_PAGE);
     };
 

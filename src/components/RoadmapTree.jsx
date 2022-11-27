@@ -50,7 +50,7 @@ const RoadmapTree = observer(() => {
         if (direction.Schema) {
             fetchSchema(direction.Schema).then(sch => {
                 setSchema(sch)
-                console.log(sch)
+                // console.log(sch)
             })
         } else {
             navigator(PROFILE_PAGE)

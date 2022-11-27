@@ -28,9 +28,23 @@ const AuthPage = () => {
 
     const registerHandle = (e) => {
         e.preventDefault()
-        console.log([registerName, registerEmail, registerPassword])
         if (registerName == "" || registerEmail == "" || registerPassword == "") {
             setErrorMessage("Заполните все поля")
+            return
+        }
+        const validateEmail = (email) => {
+            return String(email)
+              .toLowerCase()
+              .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+              );
+        };
+        if (!validateEmail(registerEmail)) {
+            setErrorMessage("Введите корректный Email")
+            return;
+        }
+        if (registerPassword.length < 4) {
+            setErrorMessage("Пароль должен содержать минимум 4 символа")
             return
         }
         register(registerName, registerEmail, registerPassword).then(value => {
@@ -47,7 +61,7 @@ const AuthPage = () => {
 
     const loginHandle = async (e) => {
         e.preventDefault()
-        console.log([loginEmail, loginPassword])
+        // console.log([loginEmail, loginPassword])
         authenticate(loginEmail, loginPassword).then(json => {
             if (json.status !== 'ok') {
                 if (json.message) {

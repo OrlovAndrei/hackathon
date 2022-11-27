@@ -20,7 +20,7 @@ const AuthFormContainer = (props) => {
     return(
         <div className={"flex-grow-1 auth-form-container " + (active ? "" : "hidden-container")}>
             <div className="auth-sub-container">
-                <Form className="d-flex flex-column align-items-center auth-form">
+                <Form className="d-flex flex-column align-items-center auth-form" onSubmit={subButtonAction}>
                     <TitleText text={title}/>
                     <div className="d-flex gap-2 mb-4">
                         <MediaAuthButton link="#" iconName="facebook"/>
@@ -43,7 +43,7 @@ const AuthFormContainer = (props) => {
                         <Button variant="primary mt-5" type="submit" className="border-0 px-5 py-3 rounded-pill auth-submit-button" onClick={buttonAction}>
                             {buttonText}
                         </Button>
-                        <Button variant="link" className="sub-button" onClick={subButtonAction}>{subButtonText}</Button>
+                        <Button variant="link" type="submit" className="sub-button">{subButtonText}</Button>
                     </div>
                 </Form>
             </div>
