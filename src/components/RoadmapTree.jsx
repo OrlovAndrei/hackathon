@@ -2,15 +2,16 @@ import { observer } from "mobx-react-lite";
 import React, { useContext, useEffect, useState } from "react";
 import Tree from "react-d3-tree";
 import { Context } from "..";
-import "./roadmaptree.css"
-import {Button} from "react-bootstrap";
-import {useNavigate} from "react-router-dom";
-import {PROFILE_PAGE} from "../util/consts";
+import "./roadmaptree.css";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { PROFILE_PAGE } from "../util/consts";
 import TreeItem from "./TreeItem";
 import {fetchSchema} from "../util/network";
 
 const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
     let bc = "red";
+    let sw = "1";
     switch (nodeDatum.attributes?.importance) {
         case "Обязательно":
             bc = "red";
@@ -24,6 +25,7 @@ const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
         default:
             break;
     }
+    if (nodeDatum.children) sw = "5";
     return (
         <g>
             <rect
@@ -31,6 +33,7 @@ const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
                 height="50"
                 x="-100"
                 stroke={bc}
+                strokeWidth={sw}
                 fill="white"
                 rx="5"
                 ry="5"
@@ -67,8 +70,8 @@ const RoadmapTree = observer(() => {
             style={{
                 width: "100%",
                 height: "100vh",
-                position: 'relative',
-                overflow: 'hidden'
+                position: "relative",
+                overflow: "hidden",
             }}
         >
             <div className="tree-legend">
@@ -86,7 +89,12 @@ const RoadmapTree = observer(() => {
                 </p>
             </div>
             <div className="back-button-container">
-                <Button onClick={() => navigate(PROFILE_PAGE)} className="back-button px-5 py-3 rounded-pill">Назад</Button>
+                <Button
+                    onClick={() => navigate(PROFILE_PAGE)}
+                    className="back-button px-5 py-3 rounded-pill"
+                >
+                    Назад
+                </Button>
             </div>
             {schema && (
               <Tree
