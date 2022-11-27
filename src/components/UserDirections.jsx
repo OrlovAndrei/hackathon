@@ -5,21 +5,25 @@ import closeIcon from "../assets/images/x.svg";
 import { useNavigate } from "react-router-dom";
 import { TREE_PAGE } from "../util/consts";
 import { Context } from "..";
+import {addUserDirection, fetchAllDirections, fetchUserDirections, removeUserDirection} from "../util/network";
 
-const UserDirections = () => {
+const UserDirections = (props) => {
     const [directions, setDirections] = useState([]);
     const navigate = useNavigate();
     const { direction } = useContext(Context);
+    const userId = props.userId;
+
+    const [allDirections, setAllDirections] = useState([])
 
     useEffect(() => {
-        console.log("set dir");
-        setDirections(getUserDirections());
+        fetchUserDirections(userId).then(dirs => setDirections(dirs))
+        fetchAllDirections().then(dirs => setAllDirections(dirs))
     }, []);
 
-    useEffect(() => {
-        console.log("save dir");
-        localStorage.setItem("UserDirections", JSON.stringify(directions));
-    }, [directions]);
+    // useEffect(() => {
+    //     console.log("save dir");
+    //     localStorage.setItem("UserDirections", JSON.stringify(directions));
+    // }, [directions]);
 
     const addNewDirection = (dirId) => {
         let alreadyExist =
@@ -32,19 +36,22 @@ const UserDirections = () => {
         setDirections((dirs) => {
             return [...dirs.filter((dir) => dir.id !== dirId), newDirection];
         });
+        addUserDirection(userId, dirId)
     };
 
-    const removeDirection = (dirId) => {
+    const removeDirection = async (dirId) => {
         setDirections((d) => d.filter((d) => d.id !== dirId));
+        removeUserDirection(userId, dirId)
     };
 
-    const openTree = (treeId) => {
-        direction.setSchema(treeId + ".json");
-        localStorage.setItem("CurrentTreeId", treeId);
+    const openTree = (schema) => {
+        if (!schema) return
+        direction.setSchema(schema);
+        console.log(schema)
         navigate(TREE_PAGE);
     };
 
-    const AddButton = createAddButton(addNewDirection);
+    const AddButton = createAddButton(addNewDirection, allDirections);
 
     return (
         <div className="directions-container">
@@ -54,19 +61,21 @@ const UserDirections = () => {
                 </p>
             )}
             {directions.map((d) => (
-                <button
-                    onClick={() => openTree(d.id)}
-                    className={"direction " + d.color}
-                    key={d.id}
-                >
-                    {d.name}
+                <div style={{position: 'relative'}} key={d.id} className="dir-container">
                     <button
-                        onClick={() => removeDirection(d.id)}
-                        className="del-dir-btn"
+                      onClick={() => openTree(d.schema)}
+                      className={"direction " + d.color}
+                      key={d.id}
+                    >
+                        {d.name}
+                    </button>
+                    <button
+                      onClick={() => removeDirection(d.id)}
+                      className="del-dir-btn"
                     >
                         <img src={closeIcon} alt="" />
                     </button>
-                </button>
+                </div>
             ))}
             {AddButton}
         </div>
@@ -75,9 +84,7 @@ const UserDirections = () => {
 
 export default UserDirections;
 
-const createAddButton = (onSelectCallback) => {
-    let allDirections = getAllDirections();
-
+const createAddButton = (onSelectCallback, allDirections) => {
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
         <button
             ref={ref}

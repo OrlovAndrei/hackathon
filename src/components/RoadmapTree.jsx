@@ -7,6 +7,7 @@ import {Button} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import {PROFILE_PAGE} from "../util/consts";
 import TreeItem from "./TreeItem";
+import {fetchSchema} from "../util/network";
 
 const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
     let bc = "red";
@@ -42,10 +43,24 @@ const renderRectSvgNode = ({ nodeDatum, toggleNode }) => {
 };
 
 const RoadmapTree = observer(() => {
+    const [schema, setSchema] = useState(null)
+    const navigator = useNavigate()
+
+    useEffect(() => {
+        if (direction.Schema) {
+            fetchSchema(direction.Schema).then(sch => {
+                setSchema(sch)
+                console.log(sch)
+            })
+        } else {
+            navigator(PROFILE_PAGE)
+        }
+    }, [])
+
     const { width, height } = window.screen;
     const { direction } = useContext(Context);
     const navigate = useNavigate();
-    const schema = require("../assets/trees/" + direction.Schema);
+
     return (
         <div
             id="treeWrapper"
@@ -73,7 +88,8 @@ const RoadmapTree = observer(() => {
             <div className="back-button-container">
                 <Button onClick={() => navigate(PROFILE_PAGE)} className="back-button px-5 py-3 rounded-pill">Назад</Button>
             </div>
-            <Tree
+            {schema && (
+              <Tree
                 data={schema}
                 orientation="vertical"
                 renderCustomNodeElement={renderRectSvgNode}
@@ -84,7 +100,8 @@ const RoadmapTree = observer(() => {
                 nodeSize={{ x: 250, y: 50 }}
                 initialDepth={1}
                 zoom={0.6}
-            />
+              />
+            )}
         </div>
     );
 });

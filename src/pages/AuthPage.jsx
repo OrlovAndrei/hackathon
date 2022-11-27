@@ -5,6 +5,7 @@ import AuthFormContainer from "../components/AuthFormContainer";
 import PagesLayout from "../components/PagesLayout";
 import {useNavigate} from "react-router-dom";
 import {PROFILE_PAGE} from "../util/consts";
+import {authenticate} from "../util/network";
 
 const AuthPage = () => {
     let [screen, setScreen] = useState("login");
@@ -31,11 +32,17 @@ const AuthPage = () => {
         // console.log([registerName, registerEmail, registerPassword])
     }
 
-    const loginHandle = (e) => {
-        // navigation(PROFILE_PAGE)
+    const loginHandle = async (e) => {
         e.preventDefault()
         console.log([loginEmail, loginPassword])
-        setErrorMessage("Неверные данные")
+        authenticate(loginEmail, loginPassword).then(json => {
+            if (json.status !== 'ok') {
+                setErrorMessage("Неверные данные")
+            } else {
+                localStorage.setItem("user_id", json.user_id)
+                navigation(PROFILE_PAGE)
+            }
+        }).catch(() => setErrorMessage('Что-то пошло не так'))
     }
 
     let sidePage = sidepage(screen, onScreenChange);

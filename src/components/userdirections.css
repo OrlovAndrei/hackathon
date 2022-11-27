@@ -42,7 +42,7 @@
     right: -12px;
 }
 
-.direction:hover .del-dir-btn {
+.dir-container:hover .del-dir-btn {
     display: flex;
 }
 
