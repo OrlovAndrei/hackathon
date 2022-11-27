@@ -1,3 +1,7 @@
+.auth-bg {
+    overflow-y: auto;
+}
+
 .page-container {
     width: 67vw;
     height: 80.8vh;

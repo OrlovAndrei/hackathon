@@ -1,0 +1,35 @@
+.news-container-wrapper {
+    width: 100%;
+    height: fit-content;
+    min-height: 100%;
+    padding-bottom: 3rem;
+}
+
+.news-container {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: -1px;
+
+    overflow: hidden;
+}
+
+@media screen and (max-width: 1300px) {
+    .news-container-wrapper {
+        padding-bottom: 0;
+    }
+
+    .news-container {
+        border-radius: 0;
+        margin: 0;
+    }
+}
+
+.sub-header {
+    margin-top: 3rem;
+    text-transform: uppercase;
+    color: #3AB19B;
+    font-size: 13px;
+    font-weight: bold;
+    margin-left: 0.5rem;
+}

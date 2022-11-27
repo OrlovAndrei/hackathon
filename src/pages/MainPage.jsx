@@ -1,19 +1,17 @@
 import React, {useEffect} from "react";
-import {AUTH_PAGE} from "../util/consts";
+import {AUTH_PAGE, NEWS_PAGE} from "../util/consts";
 import bg from "../assets/images/background.svg"
 import {useNavigate} from "react-router-dom";
 import totoro from "../assets/images/totoro.gif";
+import "./mainpage.css"
 
 const MainPage = () => {
     let navigate = useNavigate()
 
     useEffect(() => {
-        let random = Math.random() * 3000 + 500
+        let random = Math.random() * 2500 + 500
         setTimeout(() => {
-            let userId = localStorage.getItem("user_id");
-            if (userId == null) {
-                navigate(AUTH_PAGE)
-            }
+          navigate(NEWS_PAGE)
         }, random)
     }, [])
 
@@ -28,8 +26,8 @@ const MainPage = () => {
             justifyContent: 'center',
             overflow: 'hidden'
         }}>
-            <div style={{position: 'relative'}}>
-                <img src={totoro} alt=""/>
+            <div style={{position: 'relative'}} className="totoro-container">
+                <img src={totoro} className="totoro"/>
                 <div style={{
                     position: 'absolute',
                     inset: 0,

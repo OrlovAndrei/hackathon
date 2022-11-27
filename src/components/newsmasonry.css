@@ -1,0 +1,51 @@
+.masonry-component {
+    display: flex;
+    justify-content: center;
+}
+
+.masonry-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.news-block {
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.news-block img {
+    width: 100%;
+}
+
+.big-block {
+    height: 521px;
+}
+
+.small-block {
+    height: 370px;
+}
+
+@media screen and (max-width: 600px) {
+    .big-block {
+        height: 300px;
+    }
+
+    .small-block {
+        height: 180px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .third {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .second {
+        display: none;
+    }
+}
